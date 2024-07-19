@@ -1,0 +1,107 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.systemagmbh.marquardtrainingplugin.controller.MainView"
+     busyIndicatorDelay="0"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    height="100%">
+    <f:DynamicPage id="dynamicPageId">
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="{i18n>headerTitle}"/>
+                    </f:heading>
+                    <f:navigationActions>
+                        
+                        <Button
+                                icon="sap-icon://full-screen"
+                                type="Transparent" />
+                        <Button
+                                icon="sap-icon://decline"
+                                type="Transparent" />
+                    </f:navigationActions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <!-- DynamicPage Header -->
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <layout:HorizontalLayout allowWrapping="true">
+                        <layout:VerticalLayout class="sapUiLargeMarginEnd">
+                            <Label class="sapUiSmallMargin" text="{i18n>selectedSfc}: {preloadData>/data/sfc}" />
+                            <Label  class="sapUiSmallMargin" text="{i18n>selectedMaterial}: {preloadData>/data/material}" />
+                            <Label  class="sapUiSmallMargin" text="{i18n>selectedOperation}: {preloadData>/data/operation}" />
+                        </layout:VerticalLayout>
+
+                        <layout:VerticalLayout class="sapUiLargeMarginBegin">
+                            <Label class="sapUiSmallMargin titleMaterial" text="{i18n>materialInfo}" />
+                            <Label class="sapUiSmallMargin" text="{i18n>materialStatus}: {preloadData>/data/materialStatus}" />
+                            <Label  class="sapUiSmallMargin" text="{i18n>lotSize}: {preloadData>/data/lotSize}" />
+                            <Label  class="sapUiSmallMargin" text="{i18n>materialType}: {preloadData>/data/materialType}" />
+                        </layout:VerticalLayout>
+                    </layout:HorizontalLayout>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <f:content>
+                <Panel>
+                    <content>
+                        <FlexBox
+                                class="ne-flexbox1 sapUiMediumMargin"
+                                justifyContent="Center"
+                                alignItems="Center">
+                                <Label class="labelForMaterial" text="{i18n>textContent}: {preloadData>/data/material}" />
+                        </FlexBox>
+                        
+                        <FlexBox
+                            class="ne-flexbox1"
+                            justifyContent="Center"
+                            alignItems="Center">
+                            <Button class="sapUiMediumMargin" text="{i18n>startTime}" id="startButtonId" type="Emphasized" press="pressStartTimeButton"> </Button>
+                            <Button class="sapUiMediumMargin" text="{i18n>stopTime}" id="stopButtonId" type="Emphasized" press="pressStopTimeButton"> </Button>
+                            <Button class="sapUiMediumMargin" text="{i18n>backendCall}" id="backendCallButtonId" type="Emphasized" press="pressBackendCallButton"> </Button>
+                        </FlexBox>
+
+                        <Table  id="idMaterialTable"
+                            sticky="HeaderToolbar,ColumnHeaders"
+                            items="{dataFromTimeTracking>/items}"
+                            class="sapFDynamicPageAlignContent sapUiLargeMarginBottom  myTable"
+                            width="auto">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="{i18n>headerTitle}" level="H2"/>
+                                    <ToolbarSpacer></ToolbarSpacer>
+                                </Toolbar>
+                            
+                            </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="{i18n>material}" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>startTime}" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>stopTime}" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <Text
+                                                    text="{dataFromTimeTracking>material}" />
+                                            <Text
+                                                   text="{dataFromTimeTracking>startTime}" />
+                                            <Text
+                                                    text="{dataFromTimeTracking>endTime}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                        </Table>
+
+                    </content>
+                </Panel>
+            </f:content>
+        </f:DynamicPage>
+</mvc:View>

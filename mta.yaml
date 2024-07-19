@@ -1,0 +1,46 @@
+_schema-version: "3.1"
+ID: tutorial_marquardt
+version: 0.0.6
+
+modules:
+# --------------------- APPROUTER MODULE ---------------------
+  - name: tutorial_marquardt-app
+# ------------------------------------------------------------
+    type: html5
+    path: app
+    parameters:
+      disk-quota: 512M
+      memory: 256M
+    requires: # Resources or parameters from other modules (provides)
+      - name: tutorial_marquardt-uaa      
+    properties: # User-Provides Variables (environment variables)
+      httpHeaders:
+        - X-Frame-Options: deny
+      CORS: "[{\"uriPattern\": \"^(.*)$\",\"allowedOrigin\": [
+             {\"host\": \"*.dmc.cloud.sap\",\"protocol\": \"https\"}],
+             \"allowedMethods\": [\"GET\",\"POST\",\"OPTIONS\"],
+             \"allowedHeaders\":[\"Origin\", \"Accept\",\"X-Requested-With\",\"Content-Type\",
+             \"Access-Control-Request-Method\",\"Access-Control-Request-Headers\",\"Authorization\",
+             \"X-Sap-Cid\",\"X-Csrf-Token\",\"x-dme-industry-type\",\"x-dme-plant\",\"x-features\"],
+             \"exposeHeaders\": [\"Accept\",\"Authorization\",\"X-Requested-With\",\"X-Sap-Cid\",
+             \"Access-Control-Allow-Origin\",\"Access-Control-Allow-Credentials\",\"X-Csrf-Token\",
+             \"Content-Type\",\"x-dme-industry-type\",\"x-dme-plant\",\"x-features\"]}]"        
+# --------------------- RESOURCES ---------------------
+resources:
+# -----------------------------------------------------
+  - name: tutorial_marquardt-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config: # override xsappname as it needs to be unique
+        xsappname: tutorial_marquardt-xsuaa-${space}
+  - name: tutorial_marquardt-logs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
+
+
+

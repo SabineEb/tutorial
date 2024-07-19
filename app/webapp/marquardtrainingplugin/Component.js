@@ -1,0 +1,2 @@
+sap.ui.define(["sap/dm/dme/podfoundation/component/production/ProductionUIComponent","sap/ui/Device","sap/ui/model/json/JSONModel"],function(e,n,t){"use strict";return e.extend("com.systemagmbh.marquardtrainingplugin.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);var i=new t(n);i.setDefaultBindingMode("OneWay");this.setModel(i,"device");this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map

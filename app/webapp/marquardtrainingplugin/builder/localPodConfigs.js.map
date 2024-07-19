@@ -1,0 +1,1 @@
+{"version":3,"file":"localPodConfigs.js","names":["sap","ui","define","data","startButtonVisible","stopButtonVisible","backendCallButtonVisible","title","text","key"],"sources":["localPodConfigs-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,GAAI,WACd,IAAIC,EAAQ,CACZC,mBAAsB,KACtBC,kBAAqB,KACrBC,yBAA4B,MAC5BC,MAAS,aACTC,KAAQ,aACRC,IAAO,wDAEP,OAAON,CACX","ignoreList":[]}

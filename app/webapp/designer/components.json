@@ -1,0 +1,15 @@
+{
+	"components": [
+		{
+			"id": "marquardtrainingplugin",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "com.systemagmbh.marquardtrainingplugin",
+			"propertyEditor": "com.systemagmbh.marquardtrainingplugin.builder.PropertyEditor",
+			"i18n": "com.systemagmbh.marquardtrainingplugin.i18n.i18n",
+            "productionProcessEnabled": false,
+           "productionProcessTitle": "marquardtrainingplugin",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		}   
+	]
+}

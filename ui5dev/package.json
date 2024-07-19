@@ -1,0 +1,17 @@
+{
+    "name": "marquardtrainingplugin",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node node_modules/dmc-local-app-router/server.js",
+        "start-g":"node $(npm root -g)/dmc-local-app-router/server.js",
+        "install":"npm i -g && cd marquardtrainingplugin && npm i",
+        "login": "cf login -a https://api.cf.us10-001.hana.ondemand.com -u sabine.ebel@systema.com",
+        "build": "mbt build -p=cf -s=./ -t=./mta_archives",
+        "deploy": "cf deploy ./mta_archives/marquardtrainingplugin_0.0.1.mtar -f",
+        "bd": "cd marquardtrainingplugin && ui5 build && cd .. && mbt build -p=cf -s=./ -t=./mta_archives && cf deploy ./mta_archives/marquardtrainingplugin_0.0.1.mtar -f"
+    },
+    "devDependencies": {
+        "@ui5/cli": "^3.9.2",
+        "dmc-local-app-router": "^1.0.2"
+    }
+}
